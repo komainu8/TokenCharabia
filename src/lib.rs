@@ -5,6 +5,8 @@ use charabia::Tokenize;
 
 #[no_mangle]
 pub extern "C" fn tokenize(document_raw: *const c_char) {
-    let document = unsafe { CStr::from_ptr(document_raw).to_str().unwrap() };
-    let mut tokens = document.tokenize();
+    let document = unsafe { CStr::from_ptr(document_raw) }
+                            .to_str()
+                            .unwrap();
+    let tokens = document.tokenize();
 }
